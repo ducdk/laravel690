@@ -1,4 +1,4 @@
-node ('slave'){
+node ('slave02'){
     checkout scm
 
     stage('Build') {
