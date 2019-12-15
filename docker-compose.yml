@@ -5,19 +5,19 @@ services:
         ports:
             - "6789:8001"
         networks:
-            - cloudigital_network
+            - network_laravel670
         links:
-            - web_Laravel_v670
+            - web_laravel670
         deploy:
             placement:
                 constraints: [node.role == manager]
-    web_Laravel_v670:
-        image: cloudigital/Laravel_v670
+    web_laravel670:
+        image: cloudigital/laravel670
         environment:
             - "DB_PORT=3306"
             - "DB_HOST=database"
         networks:
-            - cloudigital_network
+            - network_laravel670
         deploy:
             mode: replicated
             replicas: 4
@@ -33,11 +33,11 @@ services:
             - "MYSQL_ROOT_PASSWORD=mysql_container_root"
             - "MYSQL_USER=cloudigital"
             - "MYSQL_PASSWORD=cloudigital@mysql"
-            - "MYSQL_DATABASE=Laravel_v670"
+            - "MYSQL_DATABASE=laravel670"
         ports:
             - "33061:3306"
         networks:
-            - cloudigital_network
+            - network_laravel670
         deploy:
             mode: replicated
             replicas: 1
@@ -45,4 +45,4 @@ services:
                 constraints: [node.role == worker]
 
 networks:
-    cloudigital_network:
+    network_laravel670:
