@@ -15,11 +15,11 @@ RUN apt-get update \
 ADD ./php.conf /usr/local/etc/php-fpm.conf
 COPY ./php.ini /usr/local/etc/php/
 
-ADD ./src /var/www/Laravel_v670
-RUN chown www-data:www-data -R /var/www/Laravel_v670
+ADD ./src /var/www/laravel670
+RUN chown www-data:www-data -R /var/www/laravel670
 
 #RUN apt-get install net-tools -y
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-WORKDIR /var/www/Laravel_v670
+WORKDIR /var/www/laravel670
