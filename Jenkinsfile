@@ -5,13 +5,13 @@ node ('slave02'){
         checkout scm
         sh 'pwd && cd src && /usr/local/bin/composer install'
         docker.build("cloudigital/nginx", "-f Dockerfile-nginx .")
-        docker.build("cloudigital/Laravel_v670")
+        docker.build("cloudigital/laravel670")
     }
 
     stage('Test') {
-        docker.image('cloudigital/Laravel_v670').inside {
+        docker.image('cloudigital/laravel670').inside {
             sh 'php --version'
-            sh 'cd /var/www/laravel5v5 && ./vendor/bin/phpunit --testsuite Unit'
+            sh 'cd /var/www/laravel670 && ./vendor/bin/phpunit --testsuite Unit'
         }
     }
 
