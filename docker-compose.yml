@@ -5,7 +5,7 @@ services:
         ports:
             - "6789:8001"
         networks:
-            - network_laravel670
+            - netlaravel670
         links:
             - web
         deploy:
@@ -17,7 +17,7 @@ services:
             - "DB_PORT=3306"
             - "DB_HOST=database"
         networks:
-            - network_laravel670
+            - netlaravel670
         deploy:
             mode: replicated
             replicas: 4
@@ -37,7 +37,7 @@ services:
         ports:
             - "33061:3306"
         networks:
-            - network_laravel670
+            - netlaravel670
         deploy:
             mode: replicated
             replicas: 1
@@ -45,4 +45,4 @@ services:
                 constraints: [node.role == worker]
 
 networks:
-    network_laravel670:
+    netlaravel670:
