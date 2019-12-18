@@ -34,7 +34,7 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         
         post {
             always {
-                 jiraSendDeploymentInfo environmentId: 's01-L550', environmentName: 's01-L550', environmentType: 'staging', site: 'cloudigital.atlassian.net'
+                 jiraSendDeploymentInfo environmentId: 's01-L670', environmentName: 's01-L670', environmentType: 'staging', site: 'cloudigital.atlassian.net'
             }
         }
         
