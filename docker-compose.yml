@@ -1,48 +1,19 @@
-version: '3'
+version: '3.0'
 services:
-    nginx:
-        image: cloudigital/nginx
-        ports:
-            - "6789:8001"
-        networks:
-            - netlaravel670
-        links:
-            - web
-        deploy:
-            placement:
-                constraints: [node.role == manager]
-    web:
-        image: cloudigital/laravel670
-        environment:
-            - "DB_PORT=3306"
-            - "DB_HOST=database"
-        networks:
-            - netlaravel670
-        deploy:
-            mode: replicated
-            replicas: 4
-            placement:
-                constraints: [node.role == worker]
-            resources:
-                limits:
-                    cpus: '0.1'
-                    memory: 256M
-    database:
-        image: gmgdocker/mysql5.6
-        environment:
-            - "MYSQL_ROOT_PASSWORD=mysql_container_root"
-            - "MYSQL_USER=cloudigital"
-            - "MYSQL_PASSWORD=cloudigital@mysql"
-            - "MYSQL_DATABASE=laravel670"
-        ports:
-            - "33061:3306"
-        networks:
-            - netlaravel670
-        deploy:
-            mode: replicated
-            replicas: 1
-            placement:
-                constraints: [node.role == worker]
-
-networks:
-    netlaravel670:
+  backend:
+    image: "$BACKEND_IMAGE"
+    container_name: laravel670_backend
+    env_file: ./.env
+    build:
+      context: './'
+      dockerfile: 'docker/php/Dockerfile'
+      args:
+        COMPOSER_AUTH: '{"github-oauth": {"github.com": "${COMPOSER_GITHUB_TOKEN}"}}'
+  frontend:
+    image: "$FRONTEND_IMAGE"
+    container_name: laravel670_frontend
+    build:
+      context: './'
+      dockerfile: 'docker/nginx/Dockerfile'
+    depends_on:
+      - backend
