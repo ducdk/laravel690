@@ -1,0 +1,23 @@
+version: '3.0'
+services:
+  mysql:
+    image: mysql:5.7.18
+    ports:
+        - "3306:3306"
+    volumes:
+        - "./docker/.data/db/mysql:/var/lib/mysql"
+    environment:
+          MYSQL_ROOT_PASSWORD: myrootpassword
+          MYSQL_DATABASE: ${DB_DATABASE}
+          MYSQL_USER: ${DB_USERNAME}
+          MYSQL_PASSWORD: ${DB_PASSWORD}
+  backend:
+    volumes:
+      - ./:/app
+    depends_on:
+      - mysql
+  frontend:
+    ports:
+      - 8080:80
+    volumes:
+      - ./public:/app/public
