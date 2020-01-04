@@ -32,6 +32,6 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
 
     stage ('=> Run Feature Test') {
         // 4. A new deployed container comes and run Feature Test script inside via testsuite
-        sh 'sleep 5 && cd src && /usr/local/bin/docker-compose run web ./vendor/bin/phpunit --testsuite Feature'
+        //sh 'sleep 5 && cd src && /usr/local/bin/docker-compose run web ./vendor/bin/phpunit --testsuite Feature'
     }
 }
