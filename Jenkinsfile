@@ -9,11 +9,6 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         docker.build("cloudigital/nginx", "-f Dockerfile-nginx .")
         docker.build("cloudigital/laravel670")
         
-        post {
-            always {
-                 jiraSendBuildInfo branch: 'master', site: 'cloudigital.atlassian.net'
-            }
-        }
     }
 
     stage('=> Run Unit Test') {
@@ -32,11 +27,6 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         sh 'sleep 2 && cd src && cp .env.example .env'
         sh 'sleep 2 && cd src && php artisan key:generate'
         
-        post {
-            always {
-                 jiraSendDeploymentInfo environmentId: 's01-L670', environmentName: 's01-L670', environmentType: 'staging', site: 'cloudigital.atlassian.net'
-            }
-        }
         
     }
 
