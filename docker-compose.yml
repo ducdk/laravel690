@@ -35,7 +35,7 @@ services:
           MYSQL_USER: laravel670
           MYSQL_PASSWORD: secret
         ports:
-            - "33062:3306"
+            - "33061:3306"
         networks:
             - netlaravel670
         deploy:
