@@ -1,0 +1,48 @@
+version: '3'
+services:
+    nginx:
+        image: cloudigital/nginx:latest
+        ports:
+            - "9002:8001"
+        networks:
+            - netlaravel670
+        links:
+            - web
+        deploy:
+            placement:
+                constraints: [node.role == manager]
+    web:
+        image: cloudigital/laravel550:latest
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=database"
+        networks:
+            - netlaravel670
+        deploy:
+            mode: replicated
+            replicas: 4
+            placement:
+                constraints: [node.role == worker]
+            resources:
+                limits:
+                    cpus: '0.1'
+                    memory: 256M
+    database:
+        image: mysql:5.7.18
+        environment:
+          MYSQL_ROOT_PASSWORD: myrootpassword
+          MYSQL_DATABASE: laravel550
+          MYSQL_USER: laravel550
+          MYSQL_PASSWORD: secret
+        ports:
+            - "33062:3306"
+        networks:
+            - netlaravel670
+        deploy:
+            mode: replicated
+            replicas: 1
+            placement:
+                constraints: [node.role == worker]
+
+networks:
+    netlaravel670:
