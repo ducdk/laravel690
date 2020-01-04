@@ -27,9 +27,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            "laravel/dusk"
-            ]
+            "dont-discover": []
         }
     },
     "autoload": {
