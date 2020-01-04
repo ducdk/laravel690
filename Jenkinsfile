@@ -19,7 +19,7 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         }
     }
 
-    stage('Deploy to Stagging') {
+    stage('Deploy to DevelopEnv') {
         // 3. Delete old container that passed Unit Test and rebuild a new one
         sh 'cd src && /usr/local/bin/docker-compose down'        
         sh 'cd src && /usr/local/bin/docker-compose up -d'
