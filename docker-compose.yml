@@ -31,8 +31,8 @@ services:
         image: mysql:5.7.18
         environment:
           MYSQL_ROOT_PASSWORD: myrootpassword
-          MYSQL_DATABASE: laravel550
-          MYSQL_USER: laravel550
+          MYSQL_DATABASE: laravel670
+          MYSQL_USER: laravel670
           MYSQL_PASSWORD: secret
         ports:
             - "33062:3306"
