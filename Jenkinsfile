@@ -3,6 +3,7 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
 
     // Define stages: Build => Unit Test => Deploy => Feature Test
     stage('Checkout & Build') {
+        sh 'echo Building ${BRANCH_NAME}...'
         //1. Checkout scm, install depencies via composer then build ngxin + laravel container
         checkout scm
         sh 'pwd && cd src && /usr/local/bin/composer install'
