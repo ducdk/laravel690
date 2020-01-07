@@ -9,14 +9,14 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         sh 'pwd && cd src && /usr/local/bin/composer install'
         docker.build("cloudigital/nginx", "-f Dockerfile-nginx .")
         //docker.build("cloudigital/laravel670")
-        docker.build("cloudigital/laravel670", "-f Dockerfile-php .")
+        docker.build("cloudigital/laravel690", "-f Dockerfile-php .")
     }
 
     stage('=> Run Unit Test') {
         //2. Run Unit Test script inside via testsuite
-        docker.image('cloudigital/laravel670').inside {
+        docker.image('cloudigital/laravel690').inside {
             sh 'php --version'
-            //sh 'cd /var/www/laravel670 && ./vendor/bin/phpunit --testsuite Unit'
+            sh 'cd /var/www/laravel690 && ./vendor/bin/phpunit --testsuite Unit'
         }
     }
 
