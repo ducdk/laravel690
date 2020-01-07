@@ -5,19 +5,19 @@ services:
         ports:
             - "9002:8001"
         networks:
-            - netlaravel670
+            - netlaravel690
         links:
             - web
         deploy:
             placement:
                 constraints: [node.role == manager]
     web:
-        image: cloudigital/laravel670:latest
+        image: cloudigital/laravel690:latest
         environment:
             - "DB_PORT=3306"
             - "DB_HOST=database"
         networks:
-            - netlaravel670
+            - netlaravel690
         deploy:
             mode: replicated
             replicas: 4
@@ -37,7 +37,7 @@ services:
         ports:
             - "33062:3306"
         networks:
-            - netlaravel670
+            - netlaravel690
         deploy:
             mode: replicated
             replicas: 1
