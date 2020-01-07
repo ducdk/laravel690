@@ -16,7 +16,7 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         //2. Run Unit Test script inside via testsuite
         docker.image('cloudigital/laravel690').inside {
             sh 'php --version'
-            sh 'cd /var/www/laravel690 && ./vendor/bin/phpunit --testsuite Unit'
+            //sh 'cd /var/www/laravel690 && ./vendor/bin/phpunit --testsuite Unit'
         }
     }
 
