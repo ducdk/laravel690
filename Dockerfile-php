@@ -12,8 +12,8 @@ RUN apt-get update \
     
 
 
-ADD ./php_config/php.conf /usr/local/etc/php-fpm.conf
-COPY ./php_config/php.ini /usr/local/etc/php/
+ADD ./docker_configs/php.conf /usr/local/etc/php-fpm.conf
+COPY ./docker_configs/php.ini /usr/local/etc/php/
 
 ADD ./src /var/www/laravel670
 RUN chown www-data:www-data -R /var/www/laravel670
