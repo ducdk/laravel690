@@ -45,4 +45,4 @@ services:
                 constraints: [node.role == worker]
 
 networks:
-    netlaravel670:
+    netlaravel690:
