@@ -3,8 +3,8 @@ FROM nginx:latest
 ADD ./docker_configs/default.conf /etc/nginx/conf.d/default.conf
 #COPY ./docker_configs/php.ini /usr/local/etc/php/
 
-ADD ./src /var/www/laravel670
-RUN chown www-data:www-data -R /var/www/laravel670
+ADD ./src /var/www/laravel690
+RUN chown www-data:www-data -R /var/www/laravel690
 
 RUN apt-get update
 RUN apt-get install net-tools -y
