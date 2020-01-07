@@ -10,6 +10,8 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         docker.build("cloudigital/nginx", "-f Dockerfile-nginx .")
         //docker.build("cloudigital/laravel670")
         docker.build("cloudigital/laravel690", "-f Dockerfile-php .")
+        
+        jiraSendBuildInfo branch: 'LAR690-1', site: 'cloudigital.atlassian.net'
     }
 
     stage('=> Run Unit Test') {
@@ -27,7 +29,7 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         //sh 'sleep 10 && cd src && /usr/local/bin/docker-compose run web php artisan migrate --force'
         sh 'sleep 2 && cd src && cp .env.example .env'
         sh 'sleep 2 && cd src && php artisan key:generate'
-        
+        jiraSendBuildInfo branch: 'LAR690-1', site: 'cloudigital.atlassian.net'
         
     }
 
