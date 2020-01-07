@@ -29,7 +29,7 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         //sh 'sleep 10 && cd src && /usr/local/bin/docker-compose run web php artisan migrate --force'
         sh 'sleep 2 && cd src && cp .env.example .env'
         sh 'sleep 2 && cd src && php artisan key:generate'
-        jiraSendBuildInfo branch: 'LAR690-1', site: 'cloudigital.atlassian.net'
+        jiraSendDeploymentInfo environmentId: 'us-dev-1', environmentName: 'us-dev-1', environmentType: 'development', site: 'cloudigital.atlassian.net'
         
     }
 
