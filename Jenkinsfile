@@ -8,8 +8,8 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         checkout scm
         sh 'pwd && cd src && /usr/local/bin/composer install'
         docker.build("cloudigital/nginx", "-f Dockerfile-nginx .")
-        docker.build("cloudigital/laravel670")
-        
+        //docker.build("cloudigital/laravel670")
+        docker.build("cloudigital/laravel670", "-f Dockerfile-php .")
     }
 
     stage('=> Run Unit Test') {
