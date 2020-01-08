@@ -2,7 +2,7 @@ version: '3.0'
 services:
   backend:
     image: "$BACKEND_IMAGE"
-    container_name: laravel670_backend
+    container_name: contaner_backend
     env_file: ./.env
     build:
       context: './'
@@ -11,7 +11,7 @@ services:
         COMPOSER_AUTH: '{"github-oauth": {"github.com": "${COMPOSER_GITHUB_TOKEN}"}}'
   frontend:
     image: "$FRONTEND_IMAGE"
-    container_name: laravel670_frontend
+    container_name: contaner_frontend
     build:
       context: './'
       dockerfile: 'docker/nginx/Dockerfile'
