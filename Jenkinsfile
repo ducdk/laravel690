@@ -16,7 +16,7 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         docker.build("cloudigital/laravel690", "-f Dockerfile-php .")
         
         //Notify build status to Jira
-        jiraSendBuildInfo branch: 'LAR690-1', site: 'cloudigital.atlassian.net'
+        jiraSendBuildInfo branch: 'LAR690-2', site: 'cloudigital.atlassian.net'
     }
 
     stage('=> Run Unit Test') {
