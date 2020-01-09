@@ -3,7 +3,6 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
 
     // Define stages: Build => Unit Test => Deploy => Feature Test
     stage('Checkout & Build') {
-        sh 'echo Building ${env.BRANCH_NAME}...'
         
         //1. Checkout scm, install depencies via composer then build ngxin + laravel container
         checkout scm
@@ -16,7 +15,7 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
         docker.build("cloudigital/laravel690", "-f Dockerfile-php .")
         
         //Notify build status to Jira
-        jiraSendBuildInfo branch: 'LAR690-1', site: 'cloudigital.atlassian.net'
+        jiraSendBuildInfo branch: 'LAR690-2', site: 'cloudigital.atlassian.net'
     }
 
     stage('=> Run Unit Test') {
@@ -44,6 +43,6 @@ node ('slave01'){ // Assign to node with labled "slave01" to run this task
 
     stage ('=> Run Feature Test') {
         // 4. A new deployed container comes and run Feature Test script inside via testsuite
-        //sh 'sleep 5 && cd src && /usr/local/bin/docker-compose run web ./vendor/bin/phpunit --testsuite Feature'
+        sh 'sleep 5 && cd src && /usr/local/bin/docker-compose run web ./vendor/bin/phpunit --testsuite Feature'
     }
 }
