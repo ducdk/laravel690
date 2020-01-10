@@ -1,4 +1,4 @@
-node ('slave01'){ // Assign to node with labled "slave01" to run this task
+node ('master'){ // Assign to node with labled "slave01" to run this task
     checkout scm
 
     // Define stages: Build => Unit Test => Deploy => Feature Test
