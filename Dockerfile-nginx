@@ -7,4 +7,4 @@ ADD ./src /var/www/laravel690
 RUN chown www-data:www-data -R /var/www/laravel690
 
 RUN apt-get update
-RUN apt-get install net-tools -y
+#RUN apt-get install net-tools -y
